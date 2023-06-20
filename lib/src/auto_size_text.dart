@@ -1,6 +1,6 @@
 part of auto_size_text;
 
-typedef _AdaptiveTextContextMenuBuilder = Widget Function(BuildContext, SelectableRegionState);
+typedef _AdaptiveTextContextMenuBuilder = Widget Function(BuildContext, EditableTextState);
 
 /// Flutter widget that automatically resizes text to fit perfectly within its
 /// bounds.
@@ -45,7 +45,6 @@ class AutoSizeText extends StatefulWidget {
         enableInteractiveSelection = false,
         selectionControls = null,
         dragStartBehavior = DragStartBehavior.start,
-        toolbarOptions = null,
         onTap = null,
         scrollPhysics = null,
         onSelectionChanged = null,
@@ -92,7 +91,6 @@ class AutoSizeText extends StatefulWidget {
         enableInteractiveSelection = false,
         selectionControls = null,
         dragStartBehavior = DragStartBehavior.start,
-        toolbarOptions = null,
         onTap = null,
         scrollPhysics = null,
         onSelectionChanged = null,
@@ -136,7 +134,6 @@ class AutoSizeText extends StatefulWidget {
     this.dragStartBehavior = DragStartBehavior.start,
     this.selectionHeightStyle = ui.BoxHeightStyle.tight,
     this.selectionWidthStyle = ui.BoxWidthStyle.tight,
-    this.toolbarOptions,
     this.onTap,
     this.scrollPhysics,
     this.onSelectionChanged,
@@ -187,7 +184,6 @@ class AutoSizeText extends StatefulWidget {
     this.dragStartBehavior = DragStartBehavior.start,
     this.selectionHeightStyle = ui.BoxHeightStyle.tight,
     this.selectionWidthStyle = ui.BoxWidthStyle.tight,
-    this.toolbarOptions,
     this.onTap,
     this.scrollPhysics,
     this.onSelectionChanged,
@@ -450,13 +446,6 @@ class AutoSizeText extends StatefulWidget {
   /// {@macro flutter.widgets.editableText.showCursor}
   final bool showCursor;
 
-  /// Configuration of toolbar options.
-  ///
-  /// Paste and cut will be disabled regardless.
-  ///
-  /// If not set, select all and copy will be enabled by default.
-  final ToolbarOptions? toolbarOptions;
-
   /// Controls how tall the selection highlight boxes are computed to be.
   ///
   /// See [ui.BoxHeightStyle] for details on available styles.
@@ -695,7 +684,6 @@ class _AutoSizeTextState extends State<AutoSizeText> {
           scrollPhysics: widget.scrollPhysics,
           selectionControls: widget.selectionControls,
           showCursor: widget.showCursor,
-          toolbarOptions: widget.toolbarOptions,
           semanticsLabel: widget.semanticsLabel,
           selectionHeightStyle: widget.selectionHeightStyle,
           selectionWidthStyle: widget.selectionWidthStyle,
@@ -728,7 +716,6 @@ class _AutoSizeTextState extends State<AutoSizeText> {
           scrollPhysics: widget.scrollPhysics,
           selectionControls: widget.selectionControls,
           showCursor: widget.showCursor,
-          toolbarOptions: widget.toolbarOptions,
           semanticsLabel: widget.semanticsLabel,
           selectionHeightStyle: widget.selectionHeightStyle,
           selectionWidthStyle: widget.selectionWidthStyle,
