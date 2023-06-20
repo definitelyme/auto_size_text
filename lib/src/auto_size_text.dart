@@ -1,5 +1,7 @@
 part of auto_size_text;
 
+typedef _AdaptiveTextContextMenuBuilder = Widget Function(BuildContext, SelectableRegionState);
+
 /// Flutter widget that automatically resizes text to fit perfectly within its
 /// bounds.
 ///
@@ -50,6 +52,10 @@ class AutoSizeText extends StatefulWidget {
         minLines = null,
         selectionHeightStyle = ui.BoxHeightStyle.tight,
         selectionWidthStyle = ui.BoxWidthStyle.tight,
+        contextMenuBuilder = null,
+        magnifierConfiguration = null,
+        textHeightBehavior = null,
+        textWidthBasis = null,
         _isSelectableText = false,
         super(key: key);
 
@@ -93,6 +99,10 @@ class AutoSizeText extends StatefulWidget {
         minLines = null,
         selectionHeightStyle = ui.BoxHeightStyle.tight,
         selectionWidthStyle = ui.BoxWidthStyle.tight,
+        contextMenuBuilder = null,
+        magnifierConfiguration = null,
+        textHeightBehavior = null,
+        textWidthBasis = null,
         _isSelectableText = false,
         super(key: key);
 
@@ -130,6 +140,10 @@ class AutoSizeText extends StatefulWidget {
     this.onTap,
     this.scrollPhysics,
     this.onSelectionChanged,
+    this.contextMenuBuilder,
+    this.magnifierConfiguration,
+    this.textHeightBehavior,
+    this.textWidthBasis,
   })  : assert(textSpan != null, 'A non-null TextSpan must be provided to a AutoSizeText.rich widget.'),
         data = null,
         locale = null,
@@ -177,6 +191,10 @@ class AutoSizeText extends StatefulWidget {
     this.onTap,
     this.scrollPhysics,
     this.onSelectionChanged,
+    this.contextMenuBuilder,
+    this.magnifierConfiguration,
+    this.textHeightBehavior,
+    this.textWidthBasis,
   })  : assert(data != null, 'A non-null String must be provided to a AutoSizeText widget.'),
         textSpan = null,
         locale = null,
@@ -449,6 +467,22 @@ class AutoSizeText extends StatefulWidget {
   /// See [ui.BoxWidthStyle] for details on available styles.
   final ui.BoxWidthStyle selectionWidthStyle;
 
+  /// {@macro flutter.widgets.EditableText.contextMenuBuilder}
+  final _AdaptiveTextContextMenuBuilder? contextMenuBuilder;
+
+  /// {@macro flutter.widgets.magnifier.TextMagnifierConfiguration.intro}
+  ///
+  /// {@macro flutter.widgets.magnifier.intro}
+  ///
+  /// {@macro flutter.widgets.magnifier.TextMagnifierConfiguration.details}
+  final TextMagnifierConfiguration? magnifierConfiguration;
+
+  /// {@macro flutter.painting.textPainter.textWidthBasis}
+  final TextWidthBasis? textWidthBasis;
+
+  /// {@macro dart.ui.textHeightBehavior}
+  final TextHeightBehavior? textHeightBehavior;
+
   @override
   _AutoSizeTextState createState() => _AutoSizeTextState();
 }
@@ -665,6 +699,10 @@ class _AutoSizeTextState extends State<AutoSizeText> {
           semanticsLabel: widget.semanticsLabel,
           selectionHeightStyle: widget.selectionHeightStyle,
           selectionWidthStyle: widget.selectionWidthStyle,
+          contextMenuBuilder: contextMenuBuilder,
+          magnifierConfiguration: magnifierConfiguration,
+          textWidthBasis: textWidthBasis,
+          textHeightBehavior: textHeightBehavior,
         );
       } else {
         return SelectableText.rich(
@@ -694,6 +732,10 @@ class _AutoSizeTextState extends State<AutoSizeText> {
           semanticsLabel: widget.semanticsLabel,
           selectionHeightStyle: widget.selectionHeightStyle,
           selectionWidthStyle: widget.selectionWidthStyle,
+          contextMenuBuilder: contextMenuBuilder,
+          magnifierConfiguration: magnifierConfiguration,
+          textWidthBasis: textWidthBasis,
+          textHeightBehavior: textHeightBehavior,
         );
       }
     }
