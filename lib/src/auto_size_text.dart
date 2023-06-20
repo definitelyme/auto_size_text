@@ -687,10 +687,10 @@ class _AutoSizeTextState extends State<AutoSizeText> {
           semanticsLabel: widget.semanticsLabel,
           selectionHeightStyle: widget.selectionHeightStyle,
           selectionWidthStyle: widget.selectionWidthStyle,
-          contextMenuBuilder: contextMenuBuilder,
-          magnifierConfiguration: magnifierConfiguration,
-          textWidthBasis: textWidthBasis,
-          textHeightBehavior: textHeightBehavior,
+          contextMenuBuilder: widget.contextMenuBuilder,
+          magnifierConfiguration: widget.magnifierConfiguration,
+          textWidthBasis: widget.textWidthBasis,
+          textHeightBehavior: widget.textHeightBehavior,
         );
       } else {
         return SelectableText.rich(
@@ -719,10 +719,10 @@ class _AutoSizeTextState extends State<AutoSizeText> {
           semanticsLabel: widget.semanticsLabel,
           selectionHeightStyle: widget.selectionHeightStyle,
           selectionWidthStyle: widget.selectionWidthStyle,
-          contextMenuBuilder: contextMenuBuilder,
-          magnifierConfiguration: magnifierConfiguration,
-          textWidthBasis: textWidthBasis,
-          textHeightBehavior: textHeightBehavior,
+          contextMenuBuilder: widget.contextMenuBuilder,
+          magnifierConfiguration: widget.magnifierConfiguration,
+          textWidthBasis: widget.textWidthBasis,
+          textHeightBehavior: widget.textHeightBehavior,
         );
       }
     }
